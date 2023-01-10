@@ -36,7 +36,7 @@ public class NoteController {
   }
   @PostMapping("/delete")
   public RedirectView deleteNote(@RequestParam long id){
-    System.out.println("In @PostMapping(\"/delete\") Why i need for this route \".csrf().disable()\" ??? And nowhere more.");
+//    System.out.println("In @PostMapping(\"/delete\") Why i need for this route \".csrf().disable()\" ??? And nowhere more.");
     noteService.deleteById(id);
     return new RedirectView("/note/list");
   }
