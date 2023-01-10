@@ -19,12 +19,6 @@ public class NoteController {
     result.addObject("noteList", noteService.listAll());
     return result;
   }
-  @PostMapping("/delete")
-  public RedirectView deleteNote(@RequestParam long id){
-    System.out.println("HERE!!!");
-    noteService.deleteById(id);
-    return new RedirectView("/note/list");
-  }
   @GetMapping("/edit")
   public ModelAndView editNote(@RequestParam Long id){
     ModelAndView result = new ModelAndView("addOrEditNote");
@@ -38,6 +32,12 @@ public class NoteController {
     note.setTitle(title);
     note.setContent(content);
     noteService.update(note);
+    return new RedirectView("/note/list");
+  }
+  @PostMapping("/delete")
+  public RedirectView deleteNote(@RequestParam long id){
+    System.out.println("In @PostMapping(\"/delete\") Why i need for this route \".csrf().disable()\" ??? And nowhere more.");
+    noteService.deleteById(id);
     return new RedirectView("/note/list");
   }
   @GetMapping("/add")

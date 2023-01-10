@@ -21,3 +21,13 @@
 Залий код на **Github** репозиторій. Переконайсь, що файл `.gitignore` налаштований коректно, і в репозиторій потрапили лише потрібні файли.
 
 Результат ДЗ - посилання на репозиторій.
+
+---
+
+When Spring Security started it's looking for implementation of `SecurityFilterChain`
+as default Spring bean declaration is `SecurityFilterChain defaultSecurityFilterChain` in `class SecurityFilterChainConfiguration` in `SpringBootWebSecurityConfiguration`
+
+1. Create migration `user`
+2. Create: `CustomUserDetailsService implements UserDetailsService`
+3. Create: `CustomAuthProvider implements AuthenticationProvider`
+4. Create: `DefaultSecurityConfig`
