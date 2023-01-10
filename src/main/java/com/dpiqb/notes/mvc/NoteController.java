@@ -2,14 +2,11 @@ package com.dpiqb.notes.mvc;
 
 import com.dpiqb.notes.Note;
 import com.dpiqb.notes.NoteService;
-import com.dpiqb.notes.storage.NoteMapStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
-import java.util.Map;
 
 @RequiredArgsConstructor
 @RequestMapping("/note")
@@ -24,6 +21,7 @@ public class NoteController {
   }
   @PostMapping("/delete")
   public RedirectView deleteNote(@RequestParam long id){
+    System.out.println("HERE!!!");
     noteService.deleteById(id);
     return new RedirectView("/note/list");
   }
@@ -59,15 +57,7 @@ public class NoteController {
 
   @GetMapping("/addmock")
   public RedirectView addMock(){
-    Map<String, String> mockData = NoteMapStorage.getMockData();
-
-    mockData.forEach((key, value) -> {
-      Note note = new Note();
-      note.setTitle(key);
-      note.setContent(value);
-      noteService.add(note);
-    });
-
+    noteService.addMockData();
     return new RedirectView("/note/list");
   }
 }
