@@ -14,12 +14,11 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig{
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    System.out.println("in my securityFilterChain");
     http
       .csrf().disable()
       .authorizeHttpRequests(
         auth -> auth
-          .requestMatchers("/note/**").permitAll()
+          .requestMatchers("/note/**").authenticated()
           .anyRequest().authenticated()
       )
       .httpBasic(Customizer.withDefaults())
