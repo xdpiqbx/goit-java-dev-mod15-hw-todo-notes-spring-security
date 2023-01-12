@@ -7,4 +7,4 @@ CREATE TABLE note_creator(
 
 INSERT INTO note_creator(name, password, authorities)
   VALUES
-    ('user', '{noop}jdbcDefault', 'USER');
+    ('user', '{noop}user', 'USER');
